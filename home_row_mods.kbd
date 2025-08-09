@@ -1,0 +1,32 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    f    p    b    j    l    u    y    ;    [    ]    \
+  caps a    r    s    t    d    h    n    e    i    o    '    ret
+  lsft z    x    c    v    k    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defalias
+  ;; Format is: name (action key-to-press key-to-hold)
+  home_a (tap-hold 200 200 a lshift)
+  home_r (tap-hold 200 200 r lmet)   ;; Changed lsuper to lmet for clarity
+  home_s (tap-hold 200 200 s lalt)
+  home_t (tap-hold 200 200 t lctrl)
+  home_n (tap-hold 200 200 n rctrl)
+  home_e (tap-hold 200 200 e ralt)
+  home_i (tap-hold 200 200 i rmet)   ;; Changed rsuper to rmet for clarity
+  home_o (tap-hold 200 200 o rshift)
+  spc_ent (tap-hold 200 200 spc ret) ;; Changed enter to ret
+)
+
+(deflayer main
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    f    p    b    j    l    u    y    ;    [    ]    \
+  caps @home_a @home_r @home_s @home_t d h    @home_n @home_e @home_i @home_o '    ret
+  lsft z    x    c    v    k    m    ,    .    /    rsft
+  lctl lmet lalt           @spc_ent       ralt rmet rctl
+)
